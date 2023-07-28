@@ -89,7 +89,8 @@ export const loginController = async (req, res) => {
       });
     }
     //token
-    const token = await JWT.sign({ _id: user._id }, process.env.JWT_SECRET, {
+    const JWT_SECRET = "your_secret_key_here";
+    const token = await JWT.sign({ _id: user._id },JWT_SECRET ,{
       expiresIn: "7d",
     });
     res.status(200).send({
